@@ -75,7 +75,7 @@ client.on("message", message => {
       const top10 = sql.prepare("SELECT * FROM scores WHERE guild = ? ORDER BY points DESC LIMIT 10;").all(message.guild.id);
       const embed = new Discord.RichEmbed()
         .setTitle("**TOP 10 TEXT** :speech_balloon:")
-        .setAuthor('?? Guild Score Leaderboards', message.guild.iconURL)
+        .setAuthor('📋 Guild Score Leaderboards', message.guild.iconURL)
         .setColor(0x00AE86);
   
       for(const data of top10) {
@@ -139,13 +139,13 @@ const days = millis / 1000 / 60 / 60 / 24;
 let roles = client.guilds.get(message.guild.id).roles.map(r => r.name);
 var embed  = new Discord.RichEmbed()
 .setAuthor(message.guild.name, message.guild.iconURL)
-.addField("**?? Server ID:**", message.guild.id,true)
-.addField("**?? Created On**", message.guild.createdAt.toLocaleString(),true)
-.addField("**?? Owned by**",`${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`)
-.addField("?? Members ",`[${message.guild.memberCount}]`,true)
-.addField('**?? Channels **',`**${message.guild.channels.filter(m => m.type === 'text').size}**` + ' text | Voice  '+ `**${message.guild.channels.filter(m => m.type === 'voice').size}** `,true)
-.addField("**?? Others **" , message.guild.region,true)
-.addField("** ?? Roles **",`**[${message.guild.roles.size}]** Role `,true)
+.addField("**🆔 Server ID:**", message.guild.id,true)
+.addField("**📅 Created On**", message.guild.createdAt.toLocaleString(),true)
+.addField("**👑 Owned by**",`${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`)
+.addField("👥 Members ",`[${message.guild.memberCount}]`,true)
+.addField('**💬 Channels **',`**${message.guild.channels.filter(m => m.type === 'text').size}**` + ' text | Voice  '+ `**${message.guild.channels.filter(m => m.type === 'voice').size}** `,true)
+.addField("**🌍 Others **" , message.guild.region,true)
+.addField("** 🔐 Roles **",`**[${message.guild.roles.size}]** Role `,true)
 .setColor('#000000')
 message.channel.sendEmbed(embed)
 
@@ -165,7 +165,7 @@ if (message.member.voiceChannel != null) {
 var embed = new Discord.RichEmbed()
  .setTitle("Succes!")
  .setColor("#000000")
- .setDescription(`لقد قمت بسحب <@${usermentioned}> الى الروم الصوتي الخاص بك? `)
+ .setDescription(`لقد قمت بسحب <@${usermentioned}> الى الروم الصوتي الخاص بك✅ `)
 var embed = new Discord.RichEmbed()
 .setTitle(`You are Moved in ${message.guild.name}`)
  .setColor("RANDOM")
@@ -179,7 +179,7 @@ message.channel.send("``لا تستطيع سحب "+ message.mentions.members.fir
  message.channel.send("**``يجب ان تكون في روم صوتي لكي تقوم بسحب العضو أليك``**")
 }
 } else {
-message.react("?")
+message.react("❌")
 }
  }
 });
@@ -269,7 +269,7 @@ client.on('message', msg => {
     if(msg.member.hasPermission("MANAGE_MESSAGES")) {
     if (textxt == "") {
         msg.delete().then
-    msg.channel.send("***```ضع عدد الرسائل التي تريد مسحها ??```***").then(m => m.delete(3000));
+    msg.channel.send("***```ضع عدد الرسائل التي تريد مسحها 👌```***").then(m => m.delete(3000));
 } else {
     msg.delete().then
     msg.delete().then
@@ -490,7 +490,7 @@ client.on('message', message => {
 
  message.author.sendMessage(`
  **
-[?????? General Commands ????????]
+[❖═════ General Commands ═══════❖]
 
  #id معلومات عن حسابك الشخصي
 
@@ -512,7 +512,7 @@ client.on('message', message => {
 
  #profile معلومات عامة مع الصورة
  
-[?????? Administrator Commands ????????]
+[❖═════ Administrator Commands ═══════❖]
 
  #ban حضر عضو من السيرفر
  
@@ -538,12 +538,12 @@ client.on('message', message => {
  
  #role all اعطاء رتبه للجميع سواء بشر او بوتات
  
-[?????? Other ????????]
+[❖═════ Other ═══════❖]
 
  #support رابط سيرفر الدعم الفني
  
  #invite رابط اضافة البوت
-[?????? Made By N4waF . ????????]
+[❖═════ Made By N4waF . ═══════❖]
 
  **`);
 
@@ -846,4 +846,4 @@ message.channel.stopTyping()
 })
 }
 });
-client.login(process.env.BOT_TOKEN);
+client.login("NTE1OTg3NzAyNDI0OTI4MjY4.DttIAg.QZ15NVsPkoBBW5-SOPGTdRUwWrU");

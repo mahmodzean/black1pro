@@ -846,4 +846,4 @@ message.channel.stopTyping()
 })
 }
 });
-client.login("NTE1OTg3NzAyNDI0OTI4MjY4.DttIAg.QZ15NVsPkoBBW5-SOPGTdRUwWrU");
+client.login("NTE1OTg3NzAyNDI0OTI4MjY4.DttREA.Mrn00PM11nlYGCuhzkJcpRgOz-Y");

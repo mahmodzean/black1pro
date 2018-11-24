@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const moment = require("moment");  
+const client = new Discord.Client();
 const fs = require("fs");      
 const dateFormat = require('dateformat');
 const client = new Discord.Client(); 
@@ -16,9 +16,9 @@ let profile = JSON.parse(fs.readFileSync("profile.json", "utf8"))
 //////////////////////////
 //////////////////////////
 /* 
-Â«–« „·›  Ã—»Ì ›ﬁÿ , ÕﬁÊﬁ
+√•√á√ê√á √£√°√ù √ä√å√ë√à√≠ √ù√û√ò , √ç√û√¶√û
 Codes Server
-ﬁ—Ì»« , „·› √ﬁÊ« ..
+√û√ë√≠√à√á√∞ , √£√°√ù √É√û√¶√á ..
 !
 */
 //////////////////////////
@@ -129,7 +129,7 @@ client.on('message', message => {
 });
 client.on('message', message => {
 if(message.content.startsWith(prefix +"server")){
-  if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")) return message.reply(`**Â–Â «·Œ«’Ì… ··«œ«—… ›ﬁÿ** :negative_squared_cross_mark: `)
+  if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")) return message.reply(`**√•√ê√• √á√°√é√á√ï√≠√â √°√°√á√è√á√ë√â √ù√û√ò** :negative_squared_cross_mark: `)
 if(!message.channel.guild) return message.reply(' ');
 const millis = new Date().getTime() - message.guild.createdAt.getTime();
 const now = new Date();
@@ -156,7 +156,7 @@ if(!message.channel.guild) return;
 if(message.content.startsWith(prefix + 'move')) {
  if (message.member.hasPermission("MOVE_MEMBERS")) {
  if (message.mentions.users.size === 0) {
- return message.channel.send("``·«” Œœ«„ «·√„— «ﬂ » Â–Â «·√„— : " +prefix+ "move [USER]``")
+ return message.channel.send("``√°√á√ì√ä√é√è√á√£ √á√°√É√£√ë √á√ü√ä√à √•√ê√• √á√°√É√£√ë : " +prefix+ "move [USER]``")
 }
 if (message.member.voiceChannel != null) {
  if (message.mentions.members.first().voiceChannel != null) {
@@ -165,7 +165,7 @@ if (message.member.voiceChannel != null) {
 var embed = new Discord.RichEmbed()
  .setTitle("Succes!")
  .setColor("#000000")
- .setDescription(`·ﬁœ ﬁ„  »”Õ» <@${usermentioned}> «·Ï «·—Ê„ «·’Ê Ì «·Œ«’ »ﬂ? `)
+ .setDescription(`√°√û√è √û√£√ä √à√ì√ç√à <@${usermentioned}> √á√°√¨ √á√°√ë√¶√£ √á√°√ï√¶√ä√≠ √á√°√é√á√ï √à√ü? `)
 var embed = new Discord.RichEmbed()
 .setTitle(`You are Moved in ${message.guild.name}`)
  .setColor("RANDOM")
@@ -173,10 +173,10 @@ var embed = new Discord.RichEmbed()
  message.guild.members.get(usermentioned).setVoiceChannel(authorchannel).then(m => message.channel.send(embed))
 message.guild.members.get(usermentioned).send(embed)
 } else {
-message.channel.send("``·«  ” ÿÌ⁄ ”Õ» "+ message.mentions.members.first() +" `ÌÃ» «‰ ÌﬂÊ‰ Â–Â «·⁄÷Ê ›Ì —Ê„ ’Ê Ì`")
+message.channel.send("``√°√á √ä√ì√ä√ò√≠√ö √ì√ç√à "+ message.mentions.members.first() +" `√≠√å√à √á√§ √≠√ü√¶√§ √•√ê√• √á√°√ö√ñ√¶ √ù√≠ √ë√¶√£ √ï√¶√ä√≠`")
 }
 } else {
- message.channel.send("**``ÌÃ» «‰  ﬂÊ‰ ›Ì —Ê„ ’Ê Ì ·ﬂÌ  ﬁÊ„ »”Õ» «·⁄÷Ê √·Ìﬂ``**")
+ message.channel.send("**``√≠√å√à √á√§ √ä√ü√¶√§ √ù√≠ √ë√¶√£ √ï√¶√ä√≠ √°√ü√≠ √ä√û√¶√£ √à√ì√ç√à √á√°√ö√ñ√¶ √É√°√≠√ü``**")
 }
 } else {
 message.react("?")
@@ -188,44 +188,44 @@ client.on("message", message => {
 	var msg = message.content.toLowerCase();
 	if( !message.guild ) return;
 	if( !msg.startsWith( prefix + 'role' ) ) return;
-	if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(' **__·Ì” ·œÌﬂ ’·«ÕÌ« __**');
+	if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(' **__√°√≠√ì √°√è√≠√ü √ï√°√á√ç√≠√á√ä__**');
 	if( msg.toLowerCase().startsWith( prefix + 'roleremove' ) ){
-		if( !args[0] ) return message.reply( '**:x: Ì—ÃÏ Ê÷⁄ «·‘Œ’ «·„—«œ ”Õ» „‰Â «·— »…**' );
-		if( !args[1] ) return message.reply( '**:x: Ì—ÃÏ Ê÷⁄ «·— »… «·„—«œ ”Õ»Â« „‰ «·‘Œ’**' );
+		if( !args[0] ) return message.reply( '**:x: √≠√ë√å√¨ √¶√ñ√ö √á√°√î√é√ï √á√°√£√ë√á√è √ì√ç√à √£√§√• √á√°√ë√ä√à√â**' );
+		if( !args[1] ) return message.reply( '**:x: √≠√ë√å√¨ √¶√ñ√ö √á√°√ë√ä√à√â √á√°√£√ë√á√è √ì√ç√à√•√á √£√§ √á√°√î√é√ï**' );
 		var role = msg.split(' ').slice(2).join(" ").toLowerCase(); 
 		var role1 = message.guild.roles.filter( r=>r.name.toLowerCase().indexOf(role)>-1 ).first(); 
-		if( !role1 ) return message.reply( '**:x: Ì—ÃÏ Ê÷⁄ «·— »… «·„—«œ ”Õ»Â« „‰ «·‘Œ’**' );if( message.mentions.members.first() ){
+		if( !role1 ) return message.reply( '**:x: √≠√ë√å√¨ √¶√ñ√ö √á√°√ë√ä√à√â √á√°√£√ë√á√è √ì√ç√à√•√á √£√§ √á√°√î√é√ï**' );if( message.mentions.members.first() ){
 			message.mentions.members.first().removeRole( role1 );
-			return message.reply('**:white_check_mark: [ '+role1.name+' ] — »… [ '+args[0]+' ]  „ ”Õ» „‰ **');
+			return message.reply('**:white_check_mark: [ '+role1.name+' ] √ë√ä√à√â [ '+args[0]+' ] √ä√£ √ì√ç√à √£√§ **');
 		}
 		if( args[0].toLowerCase() == "all" ){
 			message.guild.members.forEach(m=>m.removeRole( role1 ))
-			return	message.reply('**:white_check_mark: [ '+role1.name+' ]  „ ”Õ» „‰ «·ﬂ· — »…**');
+			return	message.reply('**:white_check_mark: [ '+role1.name+' ] √ä√£ √ì√ç√à √£√§ √á√°√ü√° √ë√ä√à√â**');
 		} else if( args[0].toLowerCase() == "bots" ){
 			message.guild.members.filter(m=>m.user.bot).forEach(m=>m.removeRole(role1))
-			return	message.reply('**:white_check_mark: [ '+role1.name+' ]  „ ”Õ» „‰ «·»Ê «  — »…**');
+			return	message.reply('**:white_check_mark: [ '+role1.name+' ] √ä√£ √ì√ç√à √£√§ √á√°√à√¶√ä√á√ä √ë√ä√à√â**');
 		} else if( args[0].toLowerCase() == "humans" ){
 			message.guild.members.filter(m=>!m.user.bot).forEach(m=>m.removeRole(role1))
-			return	message.reply('**:white_check_mark: [ '+role1.name+' ]  „ ”Õ» „‰ «·»‘—ÌÌ‰ — »…**');
+			return	message.reply('**:white_check_mark: [ '+role1.name+' ] √ä√£ √ì√ç√à √£√§ √á√°√à√î√ë√≠√≠√§ √ë√ä√à√â**');
 		} 	
 	} else {
-		if( !args[0] ) return message.reply( '**:x: Ì—ÃÏ Ê÷⁄ «·‘Œ’ «·„—«œ «⁄ÿ«∆Â« «·— »…**' );
-		if( !args[1] ) return message.reply( '**:x: Ì—ÃÏ Ê÷⁄ «·— »… «·„—«œ «⁄ÿ«∆Â« ··‘Œ’**' );
+		if( !args[0] ) return message.reply( '**:x: √≠√ë√å√¨ √¶√ñ√ö √á√°√î√é√ï √á√°√£√ë√á√è √á√ö√ò√á√Ü√•√á √á√°√ë√ä√à√â**' );
+		if( !args[1] ) return message.reply( '**:x: √≠√ë√å√¨ √¶√ñ√ö √á√°√ë√ä√à√â √á√°√£√ë√á√è √á√ö√ò√á√Ü√•√á √°√°√î√é√ï**' );
 		var role = msg.split(' ').slice(2).join(" ").toLowerCase(); 
 		var role1 = message.guild.roles.filter( r=>r.name.toLowerCase().indexOf(role)>-1 ).first(); 
-		if( !role1 ) return message.reply( '**:x: Ì—ÃÏ Ê÷⁄ «·— »… «·„—«œ «⁄ÿ«∆Â« ··‘Œ’**' );if( message.mentions.members.first() ){
+		if( !role1 ) return message.reply( '**:x: √≠√ë√å√¨ √¶√ñ√ö √á√°√ë√ä√à√â √á√°√£√ë√á√è √á√ö√ò√á√Ü√•√á √°√°√î√é√ï**' );if( message.mentions.members.first() ){
 			message.mentions.members.first().addRole( role1 );
-			return message.reply('**:white_check_mark: [ '+role1.name+' ] — »… [ '+args[0]+' ]  „ «⁄ÿ«¡ **');
+			return message.reply('**:white_check_mark: [ '+role1.name+' ] √ë√ä√à√â [ '+args[0]+' ] √ä√£ √á√ö√ò√á√Å **');
 		}
 		if( args[0].toLowerCase() == "all" ){
 			message.guild.members.forEach(m=>m.addRole( role1 ))
-			return	message.reply('**:white_check_mark: [ '+role1.name+' ]  „ «⁄ÿ«¡ «·ﬂ· — »…**');
+			return	message.reply('**:white_check_mark: [ '+role1.name+' ] √ä√£ √á√ö√ò√á√Å √á√°√ü√° √ë√ä√à√â**');
 		} else if( args[0].toLowerCase() == "bots" ){
 			message.guild.members.filter(m=>m.user.bot).forEach(m=>m.addRole(role1))
-			return	message.reply('**:white_check_mark: [ '+role1.name+' ]  „ «⁄ÿ«¡ «·»Ê «  — »…**');
+			return	message.reply('**:white_check_mark: [ '+role1.name+' ] √ä√£ √á√ö√ò√á√Å √á√°√à√¶√ä√á√ä √ë√ä√à√â**');
 		} else if( args[0].toLowerCase() == "humans" ){
 			message.guild.members.filter(m=>!m.user.bot).forEach(m=>m.addRole(role1))
-			return	message.reply('**:white_check_mark: [ '+role1.name+' ]  „ «⁄ÿ«¡ «·»‘—ÌÌ‰ — »…**');
+			return	message.reply('**:white_check_mark: [ '+role1.name+' ] √ä√£ √á√ö√ò√á√Å √á√°√à√î√ë√≠√≠√§ √ë√ä√à√â**');
 		} 
 	} 
 });
@@ -269,12 +269,12 @@ client.on('message', msg => {
     if(msg.member.hasPermission("MANAGE_MESSAGES")) {
     if (textxt == "") {
         msg.delete().then
-    msg.channel.send("***```÷⁄ ⁄œœ «·—”«∆· «· Ì  —Ìœ „”ÕÂ« ??```***").then(m => m.delete(3000));
+    msg.channel.send("***```√ñ√ö √ö√è√è √á√°√ë√ì√á√Ü√° √á√°√ä√≠ √ä√ë√≠√è √£√ì√ç√•√á ??```***").then(m => m.delete(3000));
 } else {
     msg.delete().then
     msg.delete().then
     msg.channel.bulkDelete(textxt);
-        msg.channel.send("```php\n⁄œœ «·—”«∆· «· Ì  „ „”ÕÂ«: " + textxt + "\n```").then(m => m.delete(3000));
+        msg.channel.send("```php\n√ö√è√è √á√°√ë√ì√á√Ü√° √á√°√ä√≠ √ä√£ √£√ì√ç√•√á: " + textxt + "\n```").then(m => m.delete(3000));
         }    
     }
 }
@@ -288,48 +288,48 @@ if (!message.content.startsWith(prefix)) return;
 	let args = message.content.split(" ").slice(1);
 	if (command == "mute") {
 		if (!message.channel.guild) return;
-		if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.reply("«‰  ·«  „·ﬂ ’·«ÕÌ«  !! ").then(msg => msg.delete(5000));
-		if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return message.reply("«·»Ê  ·«Ì„·ﬂ ’·«ÕÌ«  ").then(msg => msg.delete(5000));;
+		if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.reply("√á√§√ä √°√á √ä√£√°√ü √ï√°√á√ç√≠√á√ä !! ").then(msg => msg.delete(5000));
+		if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return message.reply("√á√°√à√¶√ä √°√á√≠√£√°√ü √ï√°√á√ç√≠√á√ä ").then(msg => msg.delete(5000));;
 		let user = message.mentions.users.first();
 		let muteRole = message.guild.roles.find("name", "Muted");
-		if (!muteRole) return message.reply("** ·« ÌÊÃœ — »… «·„ÌÊ  'Muted' **").then(msg => {msg.delete(5000)});
-		if (message.mentions.users.size < 1) return message.reply('** ÌÃ» ⁄·Ìﬂ «·„‰‘‰ «Ê·« **').then(msg => {msg.delete(5000)});
+		if (!muteRole) return message.reply("** √°√á √≠√¶√å√è √ë√ä√à√â √á√°√£√≠√¶√ä 'Muted' **").then(msg => {msg.delete(5000)});
+		if (message.mentions.users.size < 1) return message.reply('** √≠√å√à √ö√°√≠√ü √á√°√£√§√î√§ √á√¶√°√á√∞ **').then(msg => {msg.delete(5000)});
 		let reason = message.content.split(" ").slice(2).join(" ");
 		message.guild.member(user).addRole(muteRole);
 		const muteembed = new Discord.RichEmbed()
 		.setColor("RANDOM")
 		.setAuthor(`Muted!`, user.displayAvatarURL)
 		.setThumbnail(user.displayAvatarURL)
-		.addField("**:busts_in_silhouette:  «·„” Œœ„**",  '**[ ' + `${user.tag}` + ' ]**',true)
-		.addField("**:hammer:   „ »Ê«”ÿ… **", '**[ ' + `${message.author.tag}` + ' ]**',true)
-		.addField("**:book:  «·”»»**", '**[ ' + `${reason}` + ' ]**',true)
+		.addField("**:busts_in_silhouette:  √á√°√£√ì√ä√é√è√£**",  '**[ ' + `${user.tag}` + ' ]**',true)
+		.addField("**:hammer:  √ä√£ √à√¶√á√ì√ò√â **", '**[ ' + `${message.author.tag}` + ' ]**',true)
+		.addField("**:book:  √á√°√ì√à√à**", '**[ ' + `${reason}` + ' ]**',true)
 		.addField("User", user, true)
 		message.channel.send({embed : muteembed});
 		var muteembeddm = new Discord.RichEmbed()
 		.setAuthor(`Muted!`, user.displayAvatarURL)
 		.setDescription(`      
-${user} «‰  „⁄«ﬁ» »„ÌÊ  ﬂ «»Ì »”»» „Œ«·›… «·ﬁÊ«‰Ì‰
-${message.author.tag}  „  „⁄«ﬁ» ﬂ »Ê«”ÿ…
-[ ${reason} ] : «·”»»
-«–« ﬂ«‰  «·⁄ﬁÊ»… ⁄‰ ÿ—Ìﬁ «·Œÿ√  ﬂ·„ „⁄ «·„”ƒ·Ì‰
+${user} √á√§√ä √£√ö√á√û√à √à√£√≠√¶√ä √ü√ä√á√à√≠ √à√ì√à√à √£√é√á√°√ù√â √á√°√û√¶√á√§√≠√§
+${message.author.tag} √ä√£√ä √£√ö√á√û√à√ä√ü √à√¶√á√ì√ò√â
+[ ${reason} ] : √á√°√ì√à√à
+√á√ê√á √ü√á√§√ä √á√°√ö√û√¶√à√â √ö√§ √ò√ë√≠√û √á√°√é√ò√É √ä√ü√°√£ √£√ö √á√°√£√ì√Ñ√°√≠√§
 `)
-		.setFooter(`›Ì ”Ì—›— : ${message.guild.name}`)
+		.setFooter(`√ù√≠ √ì√≠√ë√ù√ë : ${message.guild.name}`)
 		.setColor("RANDOM")
 	user.send( muteembeddm);
   }
 if(command === `unmute`) {
-  if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.sendMessage("**·Ì” ·œÌﬂ ’·«ÕÌ… ·›ﬂ ⁄‰ «·‘Œ’ „ÌÊ **:x: ").then(m => m.delete(5000));
-if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return message.reply("**„« ⁄‰œÌ »—„‘‰**").then(msg => msg.delete(6000))
+  if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.sendMessage("**√°√≠√ì √°√è√≠√ü √ï√°√á√ç√≠√â √°√ù√ü √ö√§ √á√°√î√é√ï √£√≠√¶√ä**:x: ").then(m => m.delete(5000));
+if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return message.reply("**√£√á √ö√§√è√≠ √à√ë√£√î√§**").then(msg => msg.delete(6000))
 
   let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
-  if(!toMute) return message.channel.sendMessage("**⁄·Ìﬂ «·„‰‘‰ √Ê·«¯**:x: ");
+  if(!toMute) return message.channel.sendMessage("**√ö√°√≠√ü √á√°√£√§√î√§ √É√¶√°√á√∏**:x: ");
 
   let role = message.guild.roles.find (r => r.name === "Muted");
   
-  if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage("**·„ Ì „ «⁄ÿ«¡ Â–Â ‘Œ’ „ÌÊ  „‰ «·√”«”**:x:")
+  if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage("**√°√£ √≠√ä√£ √á√ö√ò√á√Å √•√ê√• √î√é√ï √£√≠√¶√ä √£√§ √á√°√É√ì√á√ì**:x:")
 
   await toMute.removeRole(role)
-  message.channel.sendMessage("**·ﬁœ  „ ›ﬂ «·„ÌÊ  ⁄‰ ‘Œ’ »‰Ã«Õ**:white_check_mark:");
+  message.channel.sendMessage("**√°√û√è √ä√£ √ù√ü √á√°√£√≠√¶√ä √ö√§ √î√é√ï √à√§√å√á√ç**:white_check_mark:");
 
   return;
 
@@ -391,23 +391,23 @@ client.on('message', message => {
          if(message.content === prefix + "closeroom") {
                              if(!message.channel.guild) return message.reply('** This command only for servers**');
   
-     if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **__·Ì” ·œÌﬂ ’·«ÕÌ« __**');
+     if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **__√°√≠√ì √°√è√≠√ü √ï√°√á√ç√≠√á√ä__**');
                 message.channel.overwritePermissions(message.guild.id, {
               SEND_MESSAGES: false
   
                 }).then(() => {
-                    message.reply("**__ „  ﬁ›Ì· «·‘« __ :white_check_mark: **")
+                    message.reply("**__√ä√£ √ä√û√ù√≠√° √á√°√î√á√ä__ :white_check_mark: **")
                 });
                   }
       if(message.content === prefix + "openroom") {
                           if(!message.channel.guild) return message.reply('** This command only for servers**');
   
-     if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**__·Ì” ·œÌﬂ ’·«ÕÌ« __**');
+     if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**__√°√≠√ì √°√è√≠√ü √ï√°√á√ç√≠√á√ä__**');
                 message.channel.overwritePermissions(message.guild.id, {
               SEND_MESSAGES: true
   
                 }).then(() => {
-                    message.reply("**__ „ › Õ «·‘« __:white_check_mark:**")
+                    message.reply("**__√ä√£ √ù√ä√ç √á√°√î√á√ä__:white_check_mark:**")
                 });
       }
          
@@ -464,7 +464,7 @@ if(!omar.guild.member(client.user).hasPermission("MANAGE_ROLES_OR_PERMISSIONS"))
 omar.guild.roles.forEach(m => {
 m.delete();
 });
-omar.reply("` „ Õ–› Ã„Ì⁄ «·— » »‰Ã«Õ`")
+omar.reply("`√ä√£ √ç√ê√ù √å√£√≠√ö √á√°√ë√ä√à √à√§√å√á√ç`")
 }
 });
 client.on('message', message => {
@@ -482,8 +482,8 @@ client.on('message', message => {
 client.on('message', message => {
     if (message.author.bot) return;
      if (message.content === prefix + "help") {
-      if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**··√”› ·«  „ ·ﬂ ’·«ÕÌ…** `ADMINISTRATOR`' );
-     message.channel.send('** „ «—”«· —”«·… ›Ì «·Œ«’**');
+      if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**√°√°√É√ì√ù √°√á √ä√£√ä√°√ü √ï√°√á√ç√≠√â** `ADMINISTRATOR`' );
+     message.channel.send('**√ä√£ √á√ë√ì√á√° √ë√ì√á√°√â √ù√≠ √á√°√é√á√ï**');
 
 
 
@@ -492,57 +492,57 @@ client.on('message', message => {
  **
 [?????? General Commands ????????]
 
- #id „⁄·Ê„«  ⁄‰ Õ”«»ﬂ «·‘Œ’Ì
+ #id √£√ö√°√¶√£√á√ä √ö√§ √ç√ì√á√à√ü √á√°√î√é√ï√≠
 
- #server „⁄·Ê„«  ÕÊ· «·”Ì—›—
+ #server √£√ö√°√¶√£√á√ä √ç√¶√° √á√°√ì√≠√ë√ù√ë
  
- #move ”Õ» ⁄÷Ê «·Ï —Ê„ﬂ «·’Ê Ì
+ #move √ì√ç√à √ö√ñ√¶ √á√°√¨ √ë√¶√£√ü √á√°√ï√¶√ä√≠
 
- #clear „”Õ «·—”«∆· «·„ÊÃÊœÂ ›Ì «·—Ê„ »⁄œœ
+ #clear √£√ì√ç √á√°√ë√ì√á√Ü√° √á√°√£√¶√å√¶√è√• √ù√≠ √á√°√ë√¶√£ √à√ö√è√è
 
- #avatar Ì⁄—÷ «ﬂ ’Ê— ﬂ «·‘Œ’Ì…
+ #avatar √≠√ö√ë√ñ √á√ü √ï√¶√ë√ä√ü √á√°√î√é√ï√≠√â
  
- #image Ì⁄—÷ ·ﬂ ’Ê—… «·”Ì—›—
+ #image √≠√ö√ë√ñ √°√ü √ï√¶√ë√â √á√°√ì√≠√ë√ù√ë
  
- #credit ÌÊ—Ìﬂ ﬂ„ «·ﬂ—ÌœÌ  Õﬁ ﬂ
+ #credit √≠√¶√ë√≠√ü √ü√£ √á√°√ü√ë√≠√è√≠√ä √ç√û√ä√ü
 
- #daily Ì”ÊÌ ·ﬂ ”Õ» ›·Ê”
+ #daily √≠√ì√¶√≠ √°√ü √ì√ç√à √ù√°√¶√ì
 
- #rep Ì⁄ÿÌ —Ì»
+ #rep √≠√ö√ò√≠ √ë√≠√à
 
- #profile „⁄·Ê„«  ⁄«„… „⁄ «·’Ê—…
+ #profile √£√ö√°√¶√£√á√ä √ö√á√£√â √£√ö √á√°√ï√¶√ë√â
  
 [?????? Administrator Commands ????????]
 
- #ban Õ÷— ⁄÷Ê „‰ «·”Ì—›—
+ #ban √ç√ñ√ë √ö√ñ√¶ √£√§ √á√°√ì√≠√ë√ù√ë
  
- #kick ÿ—œ ⁄÷Ê „‰ «·”Ì—›—
+ #kick √ò√ë√è √ö√ñ√¶ √£√§ √á√°√ì√≠√ë√ù√ë
  
- #mute «⁄÷«¡ „ÌÊ  ﬂ «»Ì ·⁄÷Ê ›Ì «·”Ì—›—
+ #mute √á√ö√ñ√á√Å √£√≠√¶√ä √ü√ä√á√à√≠ √°√ö√ñ√¶ √ù√≠ √á√°√ì√≠√ë√ù√ë
  
- #unmute ›ﬂ «·„ÌÊ  ⁄‰ ⁄÷Ê ›Ì «·”Ì—›—
+ #unmute √ù√ü √á√°√£√≠√¶√ä √ö√§ √ö√ñ√¶ √ù√≠ √á√°√ì√≠√ë√ù√ë
  
- #dac Õ–› Ã„Ì⁄ —Ê„«  «·”Ì—›—
+ #dac √ç√ê√ù √å√£√≠√ö √ë√¶√£√á√ä √á√°√ì√≠√ë√ù√ë
  
- #dar Õ–› Ã„Ì⁄ — » «·”Ì—›—
+ #dar √ç√ê√ù √å√£√≠√ö √ë√ä√à √á√°√ì√≠√ë√ù√ë
  
- #openroom › Õ «·„Õ«œÀ… ›Ì «·—Ê„
+ #openroom √ù√ä√ç √á√°√£√ç√á√è√ã√â √ù√≠ √á√°√ë√¶√£
  
- #closeroom ﬁ›· «·„Õ«œÀ… ›Ì «·—…Ê„
+ #closeroom √û√ù√° √á√°√£√ç√á√è√ã√â √ù√≠ √á√°√ë√â√¶√£
 
- #role «⁄ÿ«¡ — »Â ·‘Œ÷ „⁄Ì‰
+ #role √á√ö√ò√á√Å √ë√ä√à√• √°√î√é√ñ √£√ö√≠√§
  
- #role humans «⁄ÿ«¡ — » ··»‘—ÌÌ‰
+ #role humans √á√ö√ò√á√Å √ë√ä√à √°√°√à√î√ë√≠√≠√§
  
- #role bots «⁄ÿ«¡ — »Â ··»Ê « 
+ #role bots √á√ö√ò√á√Å √ë√ä√à√• √°√°√à√¶√ä√á√ä
  
- #role all «⁄ÿ«¡ — »Â ··Ã„Ì⁄ ”Ê«¡ »‘— «Ê »Ê « 
+ #role all √á√ö√ò√á√Å √ë√ä√à√• √°√°√å√£√≠√ö √ì√¶√á√Å √à√î√ë √á√¶ √à√¶√ä√á√ä
  
 [?????? Other ????????]
 
- #support —«»ÿ ”Ì—›— «·œ⁄„ «·›‰Ì
+ #support √ë√á√à√ò √ì√≠√ë√ù√ë √á√°√è√ö√£ √á√°√ù√§√≠
  
- #invite —«»ÿ «÷«›… «·»Ê 
+ #invite √ë√á√à√ò √á√ñ√á√ù√â √á√°√à√¶√ä
 [?????? Made By N4waF . ????????]
 
  **`);
@@ -571,8 +571,8 @@ client.on('message', message => {
       var id = new  Discord.RichEmbed()
       .setAuthor(message.author.username, message.author.avatarURL) 
     .setColor("#707070")
-    .addField(': œŒÊ·ﬂ ·œÌ”ﬂÊ—œ ﬁ»·', `${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(heg.createdTimestamp).fromNow()}\`` ,true) 
-    .addField(': «‰÷„«„ﬂ ·”Ì—›— ﬁ»·', `${moment(h.joinedAt).format('YYYY/M/D HH:mm:ss')} \n \`${moment(h.joinedAt).fromNow()}\``, true)               
+    .addField(': √è√é√¶√°√ü √°√è√≠√ì√ü√¶√ë√è √û√à√°', `${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(heg.createdTimestamp).fromNow()}\`` ,true) 
+    .addField(': √á√§√ñ√£√á√£√ü √°√ì√≠√ë√ù√ë √û√à√°', `${moment(h.joinedAt).format('YYYY/M/D HH:mm:ss')} \n \`${moment(h.joinedAt).fromNow()}\``, true)               
     .setFooter(`OverBot`, 'https://images-ext-2.discordapp.net/external/JpyzxW2wMRG2874gSTdNTpC_q9AHl8x8V4SMmtRtlVk/https/orcid.org/sites/default/files/files/ID_symbol_B-W_128x128.gif')                                 
     .setThumbnail(heg.avatarURL);
     message.channel.send(id)
@@ -756,12 +756,12 @@ if (!profile[getvalueof.id]) profile[getvalueof.id] = {points: 0,reps: "NOT YET"
             let Image = Canvas.Image,
             canvas = new Canvas(300, 300),
             ctx = canvas.getContext('2d');
-            fs.readFile("Super.png", function (err, Background) { //«„ œ«œ «·’Ê—…
+            fs.readFile("Super.png", function (err, Background) { //√á√£√ä√è√á√è √á√°√ï√¶√ë√â
             if (err) return console.log(err);
             let BG = Canvas.Image;
             let ground = new Image;
             ground.src = Background;
-            ctx.drawImage(ground, 0, 0, 300, 300); // ÕÃ„ «·’Ê—…
+            ctx.drawImage(ground, 0, 0, 300, 300); // √ç√å√£ √á√°√ï√¶√ë√â
  
 })
  
@@ -774,53 +774,53 @@ if (!profile[getvalueof.id]) profile[getvalueof.id] = {points: 0,reps: "NOT YET"
                         if (err) return console.log(err);
  
                         //ur name
-                        ctx.font = 'bold 16px kathen'; // ÕÃ„ «·Œÿ Ê ‰Ê⁄Â
-                        ctx.fontSize = '40px'; // ⁄—÷ «·Œÿ
-                        ctx.fillStyle = "#000000"; // ·Ê‰ «·Œÿ
-                        ctx.textAlign = "center"; // „Õ«–« … «·‰’
-                        ctx.fillText(`${getvalueof.username}`, 153, 173) // «Õœ«ÀÌ«  «”„ﬂ
+                        ctx.font = 'bold 16px kathen'; // √ç√å√£ √á√°√é√ò √¶ √§√¶√ö√•
+                        ctx.fontSize = '40px'; // √ö√ë√ñ √á√°√é√ò
+                        ctx.fillStyle = "#000000"; // √°√¶√§ √á√°√é√ò
+                        ctx.textAlign = "center"; // √£√ç√á√ê√á √â √á√°√§√ï
+                        ctx.fillText(`${getvalueof.username}`, 153, 173) // √á√ç√è√á√ã√≠√á√ä √á√ì√£√ü
  
                         //ur name
-                        ctx.font = 'bold 16px kathen'; // ÕÃ„ «·Œÿ Ê ‰Ê⁄Â
-                        ctx.fontSize = '40px'; // ⁄—÷ «·Œÿ
-                        ctx.fillStyle = "#f1f1f1"; // ·Ê‰ «·Œÿ
-                        ctx.textAlign = "center"; // „Õ«–« … «·‰’
-                        ctx.fillText(`${getvalueof.username}`, 151, 171) // «Õœ«ÀÌ«  «”„ﬂ
+                        ctx.font = 'bold 16px kathen'; // √ç√å√£ √á√°√é√ò √¶ √§√¶√ö√•
+                        ctx.fontSize = '40px'; // √ö√ë√ñ √á√°√é√ò
+                        ctx.fillStyle = "#f1f1f1"; // √°√¶√§ √á√°√é√ò
+                        ctx.textAlign = "center"; // √£√ç√á√ê√á √â √á√°√§√ï
+                        ctx.fillText(`${getvalueof.username}`, 151, 171) // √á√ç√è√á√ã√≠√á√ä √á√ì√£√ü
  
                         //credit
-                        ctx.font = "bold 12px kathen" // ‰Ê⁄ «·Œÿ ÊÕÃ„Â
-                        ctx.fontSize = '10px'; // ⁄—÷ «·Œÿ
-                        ctx.fillStyle = "#f1f1f1" // ·Ê‰ «·Œÿ
-                        ctx.textAlign = "center"; // „Õ«–« … «·‰’
-                        ctx.fillText(`$${profile[getvalueof.id].credits}`, 81, 159) // «Õœ«ÀÌ«  «·„’«—Ì
+                        ctx.font = "bold 12px kathen" // √§√¶√ö √á√°√é√ò √¶√ç√å√£√•
+                        ctx.fontSize = '10px'; // √ö√ë√ñ √á√°√é√ò
+                        ctx.fillStyle = "#f1f1f1" // √°√¶√§ √á√°√é√ò
+                        ctx.textAlign = "center"; // √£√ç√á√ê√á √â √á√°√§√ï
+                        ctx.fillText(`$${profile[getvalueof.id].credits}`, 81, 159) // √á√ç√è√á√ã√≠√á√ä √á√°√£√ï√á√ë√≠
  
                         //poits
-                        ctx.font = "bold 12px kathen" // ‰
-                        ctx.fontSize = '10px'; // ⁄—÷ «·ŒÿÊ⁄ «·Œÿ ÊÕÃ„Â
-                        ctx.fillStyle = "#f1f1f1" // ·Ê‰ «·Œÿ
-                        ctx.textAlign = "center"; // „Õ«–« … «·‰’
-                        ctx.fillText(`${profile[getvalueof.id].points}`, 221, 159) // «Õœ«ÀÌ«  «·‰ﬁ«ÿ
+                        ctx.font = "bold 12px kathen" // √§
+                        ctx.fontSize = '10px'; // √ö√ë√ñ √á√°√é√ò√¶√ö √á√°√é√ò √¶√ç√å√£√•
+                        ctx.fillStyle = "#f1f1f1" // √°√¶√§ √á√°√é√ò
+                        ctx.textAlign = "center"; // √£√ç√á√ê√á √â √á√°√§√ï
+                        ctx.fillText(`${profile[getvalueof.id].points}`, 221, 159) // √á√ç√è√á√ã√≠√á√ä √á√°√§√û√á√ò
  
                         //Level
-                        ctx.font = "bold 27px kathen" // ‰Ê⁄ «·Œÿ Ê ÕÃ„Â
-                        ctx.fontSize = '10px'; // ⁄—÷ «·Œÿ
-                        ctx.fillStyle = "#f1f1f1" // ·Ê‰ «·Œÿ
-                        ctx.textAlign = "center"; // „Õ«–« … «·‰’
-                        ctx.fillText(`${profile[getvalueof.id].level}`, 221, 118) // «Õœ«ÀÌ«  «··›·
+                        ctx.font = "bold 27px kathen" // √§√¶√ö √á√°√é√ò √¶ √ç√å√£√•
+                        ctx.fontSize = '10px'; // √ö√ë√ñ √á√°√é√ò
+                        ctx.fillStyle = "#f1f1f1" // √°√¶√§ √á√°√é√ò
+                        ctx.textAlign = "center"; // √£√ç√á√ê√á √â √á√°√§√ï
+                        ctx.fillText(`${profile[getvalueof.id].level}`, 221, 118) // √á√ç√è√á√ã√≠√á√ä √á√°√°√ù√°
  
                          //info
-                        ctx.font = "bold 12px kathen" // ‰
-                        ctx.fontSize = '15px'; // ⁄—÷ «·ŒÿÊ⁄ «·Œÿ ÊÕÃ„Â
-                        ctx.fillStyle = "#000000" // ·Ê‰ «·Œÿ
-                        ctx.textAlign = "center"; // „Õ«–« … «·‰’
-                        ctx.fillText(`${profile[getvalueof.id].tite}`, 150, 199) // «Õœ«ÀÌ«  «·‰ﬁ«ÿ
+                        ctx.font = "bold 12px kathen" // √§
+                        ctx.fontSize = '15px'; // √ö√ë√ñ √á√°√é√ò√¶√ö √á√°√é√ò √¶√ç√å√£√•
+                        ctx.fillStyle = "#000000" // √°√¶√§ √á√°√é√ò
+                        ctx.textAlign = "center"; // √£√ç√á√ê√á √â √á√°√§√ï
+                        ctx.fillText(`${profile[getvalueof.id].tite}`, 150, 199) // √á√ç√è√á√ã√≠√á√ä √á√°√§√û√á√ò
  
                         //info
-                        ctx.font = "bold 12px kathen" // ‰
-                        ctx.fontSize = '15px'; // ⁄—÷ «·ŒÿÊ⁄ «·Œÿ ÊÕÃ„Â
-                        ctx.fillStyle = "#f1f1f1" // ·Ê‰ «·Œÿ
-                        ctx.textAlign = "center"; // „Õ«–« … «·‰’
-                        ctx.fillText(`${profile[getvalueof.id].tite}`, 150, 197) // «Õœ«ÀÌ«  «·‰ﬁ«ÿ
+                        ctx.font = "bold 12px kathen" // √§
+                        ctx.fontSize = '15px'; // √ö√ë√ñ √á√°√é√ò√¶√ö √á√°√é√ò √¶√ç√å√£√•
+                        ctx.fillStyle = "#f1f1f1" // √°√¶√§ √á√°√é√ò
+                        ctx.textAlign = "center"; // √£√ç√á√ê√á √â √á√°√§√ï
+                        ctx.fillText(`${profile[getvalueof.id].tite}`, 150, 197) // √á√ç√è√á√ã√≠√á√ä √á√°√§√û√á√ò
  
                         // REP
                         ctx.font = "bold 26px  kathen";
@@ -846,4 +846,5 @@ message.channel.stopTyping()
 })
 }
 });
-client.login("NTE1OTg3NzAyNDI0OTI4MjY4.DttIAg.QZ15NVsPkoBBW5-SOPGTdRUwWrU");
+
+client.login(process.env.BOT_TOKEN);

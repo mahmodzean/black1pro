@@ -16,9 +16,9 @@ let profile = JSON.parse(fs.readFileSync("profile.json", "utf8"))
 //////////////////////////
 //////////////////////////
 /* 
-åÇÐÇ ãáÝ ÊÌÑÈí ÝÞØ , ÍÞæÞ
+هاذا ملف تجربي فقط , حقوق
 Codes Server
-ÞÑíÈÇð , ãáÝ ÃÞæÇ ..
+قريباً , ملف أقوا ..
 !
 */
 //////////////////////////
@@ -129,7 +129,7 @@ client.on('message', message => {
 });
 client.on('message', message => {
 if(message.content.startsWith(prefix +"server")){
-  if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")) return message.reply(`**åÐå ÇáÎÇÕíÉ ááÇÏÇÑÉ ÝÞØ** :negative_squared_cross_mark: `)
+  if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")) return message.reply(`**هذه الخاصية للادارة فقط** :negative_squared_cross_mark: `)
 if(!message.channel.guild) return message.reply(' ');
 const millis = new Date().getTime() - message.guild.createdAt.getTime();
 const now = new Date();
@@ -156,7 +156,7 @@ if(!message.channel.guild) return;
 if(message.content.startsWith(prefix + 'move')) {
  if (message.member.hasPermission("MOVE_MEMBERS")) {
  if (message.mentions.users.size === 0) {
- return message.channel.send("``áÇÓÊÎÏÇã ÇáÃãÑ ÇßÊÈ åÐå ÇáÃãÑ : " +prefix+ "move [USER]``")
+ return message.channel.send("``لاستخدام الأمر اكتب هذه الأمر : " +prefix+ "move [USER]``")
 }
 if (message.member.voiceChannel != null) {
  if (message.mentions.members.first().voiceChannel != null) {
@@ -165,7 +165,7 @@ if (message.member.voiceChannel != null) {
 var embed = new Discord.RichEmbed()
  .setTitle("Succes!")
  .setColor("#000000")
- .setDescription(`áÞÏ ÞãÊ ÈÓÍÈ <@${usermentioned}> Çáì ÇáÑæã ÇáÕæÊí ÇáÎÇÕ Èß? `)
+ .setDescription(`لقد قمت بسحب <@${usermentioned}> الى الروم الصوتي الخاص بك? `)
 var embed = new Discord.RichEmbed()
 .setTitle(`You are Moved in ${message.guild.name}`)
  .setColor("RANDOM")
@@ -173,10 +173,10 @@ var embed = new Discord.RichEmbed()
  message.guild.members.get(usermentioned).setVoiceChannel(authorchannel).then(m => message.channel.send(embed))
 message.guild.members.get(usermentioned).send(embed)
 } else {
-message.channel.send("``áÇ ÊÓÊØíÚ ÓÍÈ "+ message.mentions.members.first() +" `íÌÈ Çä íßæä åÐå ÇáÚÖæ Ýí Ñæã ÕæÊí`")
+message.channel.send("``لا تستطيع سحب "+ message.mentions.members.first() +" `يجب ان يكون هذه العضو في روم صوتي`")
 }
 } else {
- message.channel.send("**``íÌÈ Çä Êßæä Ýí Ñæã ÕæÊí áßí ÊÞæã ÈÓÍÈ ÇáÚÖæ Ãáíß``**")
+ message.channel.send("**``يجب ان تكون في روم صوتي لكي تقوم بسحب العضو أليك``**")
 }
 } else {
 message.react("?")
@@ -188,44 +188,44 @@ client.on("message", message => {
 	var msg = message.content.toLowerCase();
 	if( !message.guild ) return;
 	if( !msg.startsWith( prefix + 'role' ) ) return;
-	if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(' **__áíÓ áÏíß ÕáÇÍíÇÊ__**');
+	if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(' **__ليس لديك صلاحيات__**');
 	if( msg.toLowerCase().startsWith( prefix + 'roleremove' ) ){
-		if( !args[0] ) return message.reply( '**:x: íÑÌì æÖÚ ÇáÔÎÕ ÇáãÑÇÏ ÓÍÈ ãäå ÇáÑÊÈÉ**' );
-		if( !args[1] ) return message.reply( '**:x: íÑÌì æÖÚ ÇáÑÊÈÉ ÇáãÑÇÏ ÓÍÈåÇ ãä ÇáÔÎÕ**' );
+		if( !args[0] ) return message.reply( '**:x: يرجى وضع الشخص المراد سحب منه الرتبة**' );
+		if( !args[1] ) return message.reply( '**:x: يرجى وضع الرتبة المراد سحبها من الشخص**' );
 		var role = msg.split(' ').slice(2).join(" ").toLowerCase(); 
 		var role1 = message.guild.roles.filter( r=>r.name.toLowerCase().indexOf(role)>-1 ).first(); 
-		if( !role1 ) return message.reply( '**:x: íÑÌì æÖÚ ÇáÑÊÈÉ ÇáãÑÇÏ ÓÍÈåÇ ãä ÇáÔÎÕ**' );if( message.mentions.members.first() ){
+		if( !role1 ) return message.reply( '**:x: يرجى وضع الرتبة المراد سحبها من الشخص**' );if( message.mentions.members.first() ){
 			message.mentions.members.first().removeRole( role1 );
-			return message.reply('**:white_check_mark: [ '+role1.name+' ] ÑÊÈÉ [ '+args[0]+' ] Êã ÓÍÈ ãä **');
+			return message.reply('**:white_check_mark: [ '+role1.name+' ] رتبة [ '+args[0]+' ] تم سحب من **');
 		}
 		if( args[0].toLowerCase() == "all" ){
 			message.guild.members.forEach(m=>m.removeRole( role1 ))
-			return	message.reply('**:white_check_mark: [ '+role1.name+' ] Êã ÓÍÈ ãä Çáßá ÑÊÈÉ**');
+			return	message.reply('**:white_check_mark: [ '+role1.name+' ] تم سحب من الكل رتبة**');
 		} else if( args[0].toLowerCase() == "bots" ){
 			message.guild.members.filter(m=>m.user.bot).forEach(m=>m.removeRole(role1))
-			return	message.reply('**:white_check_mark: [ '+role1.name+' ] Êã ÓÍÈ ãä ÇáÈæÊÇÊ ÑÊÈÉ**');
+			return	message.reply('**:white_check_mark: [ '+role1.name+' ] تم سحب من البوتات رتبة**');
 		} else if( args[0].toLowerCase() == "humans" ){
 			message.guild.members.filter(m=>!m.user.bot).forEach(m=>m.removeRole(role1))
-			return	message.reply('**:white_check_mark: [ '+role1.name+' ] Êã ÓÍÈ ãä ÇáÈÔÑííä ÑÊÈÉ**');
+			return	message.reply('**:white_check_mark: [ '+role1.name+' ] تم سحب من البشريين رتبة**');
 		} 	
 	} else {
-		if( !args[0] ) return message.reply( '**:x: íÑÌì æÖÚ ÇáÔÎÕ ÇáãÑÇÏ ÇÚØÇÆåÇ ÇáÑÊÈÉ**' );
-		if( !args[1] ) return message.reply( '**:x: íÑÌì æÖÚ ÇáÑÊÈÉ ÇáãÑÇÏ ÇÚØÇÆåÇ ááÔÎÕ**' );
+		if( !args[0] ) return message.reply( '**:x: يرجى وضع الشخص المراد اعطائها الرتبة**' );
+		if( !args[1] ) return message.reply( '**:x: يرجى وضع الرتبة المراد اعطائها للشخص**' );
 		var role = msg.split(' ').slice(2).join(" ").toLowerCase(); 
 		var role1 = message.guild.roles.filter( r=>r.name.toLowerCase().indexOf(role)>-1 ).first(); 
-		if( !role1 ) return message.reply( '**:x: íÑÌì æÖÚ ÇáÑÊÈÉ ÇáãÑÇÏ ÇÚØÇÆåÇ ááÔÎÕ**' );if( message.mentions.members.first() ){
+		if( !role1 ) return message.reply( '**:x: يرجى وضع الرتبة المراد اعطائها للشخص**' );if( message.mentions.members.first() ){
 			message.mentions.members.first().addRole( role1 );
-			return message.reply('**:white_check_mark: [ '+role1.name+' ] ÑÊÈÉ [ '+args[0]+' ] Êã ÇÚØÇÁ **');
+			return message.reply('**:white_check_mark: [ '+role1.name+' ] رتبة [ '+args[0]+' ] تم اعطاء **');
 		}
 		if( args[0].toLowerCase() == "all" ){
 			message.guild.members.forEach(m=>m.addRole( role1 ))
-			return	message.reply('**:white_check_mark: [ '+role1.name+' ] Êã ÇÚØÇÁ Çáßá ÑÊÈÉ**');
+			return	message.reply('**:white_check_mark: [ '+role1.name+' ] تم اعطاء الكل رتبة**');
 		} else if( args[0].toLowerCase() == "bots" ){
 			message.guild.members.filter(m=>m.user.bot).forEach(m=>m.addRole(role1))
-			return	message.reply('**:white_check_mark: [ '+role1.name+' ] Êã ÇÚØÇÁ ÇáÈæÊÇÊ ÑÊÈÉ**');
+			return	message.reply('**:white_check_mark: [ '+role1.name+' ] تم اعطاء البوتات رتبة**');
 		} else if( args[0].toLowerCase() == "humans" ){
 			message.guild.members.filter(m=>!m.user.bot).forEach(m=>m.addRole(role1))
-			return	message.reply('**:white_check_mark: [ '+role1.name+' ] Êã ÇÚØÇÁ ÇáÈÔÑííä ÑÊÈÉ**');
+			return	message.reply('**:white_check_mark: [ '+role1.name+' ] تم اعطاء البشريين رتبة**');
 		} 
 	} 
 });
@@ -269,12 +269,12 @@ client.on('message', msg => {
     if(msg.member.hasPermission("MANAGE_MESSAGES")) {
     if (textxt == "") {
         msg.delete().then
-    msg.channel.send("***```ÖÚ ÚÏÏ ÇáÑÓÇÆá ÇáÊí ÊÑíÏ ãÓÍåÇ ??```***").then(m => m.delete(3000));
+    msg.channel.send("***```ضع عدد الرسائل التي تريد مسحها ??```***").then(m => m.delete(3000));
 } else {
     msg.delete().then
     msg.delete().then
     msg.channel.bulkDelete(textxt);
-        msg.channel.send("```php\nÚÏÏ ÇáÑÓÇÆá ÇáÊí Êã ãÓÍåÇ: " + textxt + "\n```").then(m => m.delete(3000));
+        msg.channel.send("```php\nعدد الرسائل التي تم مسحها: " + textxt + "\n```").then(m => m.delete(3000));
         }    
     }
 }
@@ -288,48 +288,48 @@ if (!message.content.startsWith(prefix)) return;
 	let args = message.content.split(" ").slice(1);
 	if (command == "mute") {
 		if (!message.channel.guild) return;
-		if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.reply("ÇäÊ áÇ Êãáß ÕáÇÍíÇÊ !! ").then(msg => msg.delete(5000));
-		if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return message.reply("ÇáÈæÊ áÇíãáß ÕáÇÍíÇÊ ").then(msg => msg.delete(5000));;
+		if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.reply("انت لا تملك صلاحيات !! ").then(msg => msg.delete(5000));
+		if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return message.reply("البوت لايملك صلاحيات ").then(msg => msg.delete(5000));;
 		let user = message.mentions.users.first();
 		let muteRole = message.guild.roles.find("name", "Muted");
-		if (!muteRole) return message.reply("** áÇ íæÌÏ ÑÊÈÉ ÇáãíæÊ 'Muted' **").then(msg => {msg.delete(5000)});
-		if (message.mentions.users.size < 1) return message.reply('** íÌÈ Úáíß ÇáãäÔä ÇæáÇð **').then(msg => {msg.delete(5000)});
+		if (!muteRole) return message.reply("** لا يوجد رتبة الميوت 'Muted' **").then(msg => {msg.delete(5000)});
+		if (message.mentions.users.size < 1) return message.reply('** يجب عليك المنشن اولاً **').then(msg => {msg.delete(5000)});
 		let reason = message.content.split(" ").slice(2).join(" ");
 		message.guild.member(user).addRole(muteRole);
 		const muteembed = new Discord.RichEmbed()
 		.setColor("RANDOM")
 		.setAuthor(`Muted!`, user.displayAvatarURL)
 		.setThumbnail(user.displayAvatarURL)
-		.addField("**:busts_in_silhouette:  ÇáãÓÊÎÏã**",  '**[ ' + `${user.tag}` + ' ]**',true)
-		.addField("**:hammer:  Êã ÈæÇÓØÉ **", '**[ ' + `${message.author.tag}` + ' ]**',true)
-		.addField("**:book:  ÇáÓÈÈ**", '**[ ' + `${reason}` + ' ]**',true)
+		.addField("**:busts_in_silhouette:  المستخدم**",  '**[ ' + `${user.tag}` + ' ]**',true)
+		.addField("**:hammer:  تم بواسطة **", '**[ ' + `${message.author.tag}` + ' ]**',true)
+		.addField("**:book:  السبب**", '**[ ' + `${reason}` + ' ]**',true)
 		.addField("User", user, true)
 		message.channel.send({embed : muteembed});
 		var muteembeddm = new Discord.RichEmbed()
 		.setAuthor(`Muted!`, user.displayAvatarURL)
 		.setDescription(`      
-${user} ÇäÊ ãÚÇÞÈ ÈãíæÊ ßÊÇÈí ÈÓÈÈ ãÎÇáÝÉ ÇáÞæÇäíä
-${message.author.tag} ÊãÊ ãÚÇÞÈÊß ÈæÇÓØÉ
-[ ${reason} ] : ÇáÓÈÈ
-ÇÐÇ ßÇäÊ ÇáÚÞæÈÉ Úä ØÑíÞ ÇáÎØÃ Êßáã ãÚ ÇáãÓÄáíä
+${user} انت معاقب بميوت كتابي بسبب مخالفة القوانين
+${message.author.tag} تمت معاقبتك بواسطة
+[ ${reason} ] : السبب
+اذا كانت العقوبة عن طريق الخطأ تكلم مع المسؤلين
 `)
-		.setFooter(`Ýí ÓíÑÝÑ : ${message.guild.name}`)
+		.setFooter(`في سيرفر : ${message.guild.name}`)
 		.setColor("RANDOM")
 	user.send( muteembeddm);
   }
 if(command === `unmute`) {
-  if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.sendMessage("**áíÓ áÏíß ÕáÇÍíÉ áÝß Úä ÇáÔÎÕ ãíæÊ**:x: ").then(m => m.delete(5000));
-if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return message.reply("**ãÇ ÚäÏí ÈÑãÔä**").then(msg => msg.delete(6000))
+  if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.sendMessage("**ليس لديك صلاحية لفك عن الشخص ميوت**:x: ").then(m => m.delete(5000));
+if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return message.reply("**ما عندي برمشن**").then(msg => msg.delete(6000))
 
   let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
-  if(!toMute) return message.channel.sendMessage("**Úáíß ÇáãäÔä ÃæáÇø**:x: ");
+  if(!toMute) return message.channel.sendMessage("**عليك المنشن أولاّ**:x: ");
 
   let role = message.guild.roles.find (r => r.name === "Muted");
   
-  if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage("**áã íÊã ÇÚØÇÁ åÐå ÔÎÕ ãíæÊ ãä ÇáÃÓÇÓ**:x:")
+  if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage("**لم يتم اعطاء هذه شخص ميوت من الأساس**:x:")
 
   await toMute.removeRole(role)
-  message.channel.sendMessage("**áÞÏ Êã Ýß ÇáãíæÊ Úä ÔÎÕ ÈäÌÇÍ**:white_check_mark:");
+  message.channel.sendMessage("**لقد تم فك الميوت عن شخص بنجاح**:white_check_mark:");
 
   return;
 
@@ -391,23 +391,23 @@ client.on('message', message => {
          if(message.content === prefix + "closeroom") {
                              if(!message.channel.guild) return message.reply('** This command only for servers**');
   
-     if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **__áíÓ áÏíß ÕáÇÍíÇÊ__**');
+     if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **__ليس لديك صلاحيات__**');
                 message.channel.overwritePermissions(message.guild.id, {
               SEND_MESSAGES: false
   
                 }).then(() => {
-                    message.reply("**__Êã ÊÞÝíá ÇáÔÇÊ__ :white_check_mark: **")
+                    message.reply("**__تم تقفيل الشات__ :white_check_mark: **")
                 });
                   }
       if(message.content === prefix + "openroom") {
                           if(!message.channel.guild) return message.reply('** This command only for servers**');
   
-     if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**__áíÓ áÏíß ÕáÇÍíÇÊ__**');
+     if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**__ليس لديك صلاحيات__**');
                 message.channel.overwritePermissions(message.guild.id, {
               SEND_MESSAGES: true
   
                 }).then(() => {
-                    message.reply("**__Êã ÝÊÍ ÇáÔÇÊ__:white_check_mark:**")
+                    message.reply("**__تم فتح الشات__:white_check_mark:**")
                 });
       }
          
@@ -464,7 +464,7 @@ if(!omar.guild.member(client.user).hasPermission("MANAGE_ROLES_OR_PERMISSIONS"))
 omar.guild.roles.forEach(m => {
 m.delete();
 });
-omar.reply("`Êã ÍÐÝ ÌãíÚ ÇáÑÊÈ ÈäÌÇÍ`")
+omar.reply("`تم حذف جميع الرتب بنجاح`")
 }
 });
 client.on('message', message => {
@@ -482,8 +482,8 @@ client.on('message', message => {
 client.on('message', message => {
     if (message.author.bot) return;
      if (message.content === prefix + "help") {
-      if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**ááÃÓÝ áÇ ÊãÊáß ÕáÇÍíÉ** `ADMINISTRATOR`' );
-     message.channel.send('**Êã ÇÑÓÇá ÑÓÇáÉ Ýí ÇáÎÇÕ**');
+      if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
+     message.channel.send('**تم ارسال رسالة في الخاص**');
 
 
 
@@ -492,57 +492,57 @@ client.on('message', message => {
  **
 [?????? General Commands ????????]
 
- #id ãÚáæãÇÊ Úä ÍÓÇÈß ÇáÔÎÕí
+ #id معلومات عن حسابك الشخصي
 
- #server ãÚáæãÇÊ Íæá ÇáÓíÑÝÑ
+ #server معلومات حول السيرفر
  
- #move ÓÍÈ ÚÖæ Çáì Ñæãß ÇáÕæÊí
+ #move سحب عضو الى رومك الصوتي
 
- #clear ãÓÍ ÇáÑÓÇÆá ÇáãæÌæÏå Ýí ÇáÑæã ÈÚÏÏ
+ #clear مسح الرسائل الموجوده في الروم بعدد
 
- #avatar íÚÑÖ Çß ÕæÑÊß ÇáÔÎÕíÉ
+ #avatar يعرض اك صورتك الشخصية
  
- #image íÚÑÖ áß ÕæÑÉ ÇáÓíÑÝÑ
+ #image يعرض لك صورة السيرفر
  
- #credit íæÑíß ßã ÇáßÑíÏíÊ ÍÞÊß
+ #credit يوريك كم الكريديت حقتك
 
- #daily íÓæí áß ÓÍÈ ÝáæÓ
+ #daily يسوي لك سحب فلوس
 
- #rep íÚØí ÑíÈ
+ #rep يعطي ريب
 
- #profile ãÚáæãÇÊ ÚÇãÉ ãÚ ÇáÕæÑÉ
+ #profile معلومات عامة مع الصورة
  
 [?????? Administrator Commands ????????]
 
- #ban ÍÖÑ ÚÖæ ãä ÇáÓíÑÝÑ
+ #ban حضر عضو من السيرفر
  
- #kick ØÑÏ ÚÖæ ãä ÇáÓíÑÝÑ
+ #kick طرد عضو من السيرفر
  
- #mute ÇÚÖÇÁ ãíæÊ ßÊÇÈí áÚÖæ Ýí ÇáÓíÑÝÑ
+ #mute اعضاء ميوت كتابي لعضو في السيرفر
  
- #unmute Ýß ÇáãíæÊ Úä ÚÖæ Ýí ÇáÓíÑÝÑ
+ #unmute فك الميوت عن عضو في السيرفر
  
- #dac ÍÐÝ ÌãíÚ ÑæãÇÊ ÇáÓíÑÝÑ
+ #dac حذف جميع رومات السيرفر
  
- #dar ÍÐÝ ÌãíÚ ÑÊÈ ÇáÓíÑÝÑ
+ #dar حذف جميع رتب السيرفر
  
- #openroom ÝÊÍ ÇáãÍÇÏËÉ Ýí ÇáÑæã
+ #openroom فتح المحادثة في الروم
  
- #closeroom ÞÝá ÇáãÍÇÏËÉ Ýí ÇáÑÉæã
+ #closeroom قفل المحادثة في الرةوم
 
- #role ÇÚØÇÁ ÑÊÈå áÔÎÖ ãÚíä
+ #role اعطاء رتبه لشخض معين
  
- #role humans ÇÚØÇÁ ÑÊÈ ááÈÔÑííä
+ #role humans اعطاء رتب للبشريين
  
- #role bots ÇÚØÇÁ ÑÊÈå ááÈæÊÇÊ
+ #role bots اعطاء رتبه للبوتات
  
- #role all ÇÚØÇÁ ÑÊÈå ááÌãíÚ ÓæÇÁ ÈÔÑ Çæ ÈæÊÇÊ
+ #role all اعطاء رتبه للجميع سواء بشر او بوتات
  
 [?????? Other ????????]
 
- #support ÑÇÈØ ÓíÑÝÑ ÇáÏÚã ÇáÝäí
+ #support رابط سيرفر الدعم الفني
  
- #invite ÑÇÈØ ÇÖÇÝÉ ÇáÈæÊ
+ #invite رابط اضافة البوت
 [?????? Made By N4waF . ????????]
 
  **`);
@@ -571,8 +571,8 @@ client.on('message', message => {
       var id = new  Discord.RichEmbed()
       .setAuthor(message.author.username, message.author.avatarURL) 
     .setColor("#707070")
-    .addField(': ÏÎæáß áÏíÓßæÑÏ ÞÈá', `${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(heg.createdTimestamp).fromNow()}\`` ,true) 
-    .addField(': ÇäÖãÇãß áÓíÑÝÑ ÞÈá', `${moment(h.joinedAt).format('YYYY/M/D HH:mm:ss')} \n \`${moment(h.joinedAt).fromNow()}\``, true)               
+    .addField(': دخولك لديسكورد قبل', `${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(heg.createdTimestamp).fromNow()}\`` ,true) 
+    .addField(': انضمامك لسيرفر قبل', `${moment(h.joinedAt).format('YYYY/M/D HH:mm:ss')} \n \`${moment(h.joinedAt).fromNow()}\``, true)               
     .setFooter(`OverBot`, 'https://images-ext-2.discordapp.net/external/JpyzxW2wMRG2874gSTdNTpC_q9AHl8x8V4SMmtRtlVk/https/orcid.org/sites/default/files/files/ID_symbol_B-W_128x128.gif')                                 
     .setThumbnail(heg.avatarURL);
     message.channel.send(id)
@@ -756,12 +756,12 @@ if (!profile[getvalueof.id]) profile[getvalueof.id] = {points: 0,reps: "NOT YET"
             let Image = Canvas.Image,
             canvas = new Canvas(300, 300),
             ctx = canvas.getContext('2d');
-            fs.readFile("Super.png", function (err, Background) { //ÇãÊÏÇÏ ÇáÕæÑÉ
+            fs.readFile("Super.png", function (err, Background) { //امتداد الصورة
             if (err) return console.log(err);
             let BG = Canvas.Image;
             let ground = new Image;
             ground.src = Background;
-            ctx.drawImage(ground, 0, 0, 300, 300); // ÍÌã ÇáÕæÑÉ
+            ctx.drawImage(ground, 0, 0, 300, 300); // حجم الصورة
  
 })
  
@@ -774,53 +774,53 @@ if (!profile[getvalueof.id]) profile[getvalueof.id] = {points: 0,reps: "NOT YET"
                         if (err) return console.log(err);
  
                         //ur name
-                        ctx.font = 'bold 16px kathen'; // ÍÌã ÇáÎØ æ äæÚå
-                        ctx.fontSize = '40px'; // ÚÑÖ ÇáÎØ
-                        ctx.fillStyle = "#000000"; // áæä ÇáÎØ
-                        ctx.textAlign = "center"; // ãÍÇÐÇ É ÇáäÕ
-                        ctx.fillText(`${getvalueof.username}`, 153, 173) // ÇÍÏÇËíÇÊ ÇÓãß
+                        ctx.font = 'bold 16px kathen'; // حجم الخط و نوعه
+                        ctx.fontSize = '40px'; // عرض الخط
+                        ctx.fillStyle = "#000000"; // لون الخط
+                        ctx.textAlign = "center"; // محاذا ة النص
+                        ctx.fillText(`${getvalueof.username}`, 153, 173) // احداثيات اسمك
  
                         //ur name
-                        ctx.font = 'bold 16px kathen'; // ÍÌã ÇáÎØ æ äæÚå
-                        ctx.fontSize = '40px'; // ÚÑÖ ÇáÎØ
-                        ctx.fillStyle = "#f1f1f1"; // áæä ÇáÎØ
-                        ctx.textAlign = "center"; // ãÍÇÐÇ É ÇáäÕ
-                        ctx.fillText(`${getvalueof.username}`, 151, 171) // ÇÍÏÇËíÇÊ ÇÓãß
+                        ctx.font = 'bold 16px kathen'; // حجم الخط و نوعه
+                        ctx.fontSize = '40px'; // عرض الخط
+                        ctx.fillStyle = "#f1f1f1"; // لون الخط
+                        ctx.textAlign = "center"; // محاذا ة النص
+                        ctx.fillText(`${getvalueof.username}`, 151, 171) // احداثيات اسمك
  
                         //credit
-                        ctx.font = "bold 12px kathen" // äæÚ ÇáÎØ æÍÌãå
-                        ctx.fontSize = '10px'; // ÚÑÖ ÇáÎØ
-                        ctx.fillStyle = "#f1f1f1" // áæä ÇáÎØ
-                        ctx.textAlign = "center"; // ãÍÇÐÇ É ÇáäÕ
-                        ctx.fillText(`$${profile[getvalueof.id].credits}`, 81, 159) // ÇÍÏÇËíÇÊ ÇáãÕÇÑí
+                        ctx.font = "bold 12px kathen" // نوع الخط وحجمه
+                        ctx.fontSize = '10px'; // عرض الخط
+                        ctx.fillStyle = "#f1f1f1" // لون الخط
+                        ctx.textAlign = "center"; // محاذا ة النص
+                        ctx.fillText(`$${profile[getvalueof.id].credits}`, 81, 159) // احداثيات المصاري
  
                         //poits
-                        ctx.font = "bold 12px kathen" // ä
-                        ctx.fontSize = '10px'; // ÚÑÖ ÇáÎØæÚ ÇáÎØ æÍÌãå
-                        ctx.fillStyle = "#f1f1f1" // áæä ÇáÎØ
-                        ctx.textAlign = "center"; // ãÍÇÐÇ É ÇáäÕ
-                        ctx.fillText(`${profile[getvalueof.id].points}`, 221, 159) // ÇÍÏÇËíÇÊ ÇáäÞÇØ
+                        ctx.font = "bold 12px kathen" // ن
+                        ctx.fontSize = '10px'; // عرض الخطوع الخط وحجمه
+                        ctx.fillStyle = "#f1f1f1" // لون الخط
+                        ctx.textAlign = "center"; // محاذا ة النص
+                        ctx.fillText(`${profile[getvalueof.id].points}`, 221, 159) // احداثيات النقاط
  
                         //Level
-                        ctx.font = "bold 27px kathen" // äæÚ ÇáÎØ æ ÍÌãå
-                        ctx.fontSize = '10px'; // ÚÑÖ ÇáÎØ
-                        ctx.fillStyle = "#f1f1f1" // áæä ÇáÎØ
-                        ctx.textAlign = "center"; // ãÍÇÐÇ É ÇáäÕ
-                        ctx.fillText(`${profile[getvalueof.id].level}`, 221, 118) // ÇÍÏÇËíÇÊ ÇááÝá
+                        ctx.font = "bold 27px kathen" // نوع الخط و حجمه
+                        ctx.fontSize = '10px'; // عرض الخط
+                        ctx.fillStyle = "#f1f1f1" // لون الخط
+                        ctx.textAlign = "center"; // محاذا ة النص
+                        ctx.fillText(`${profile[getvalueof.id].level}`, 221, 118) // احداثيات اللفل
  
                          //info
-                        ctx.font = "bold 12px kathen" // ä
-                        ctx.fontSize = '15px'; // ÚÑÖ ÇáÎØæÚ ÇáÎØ æÍÌãå
-                        ctx.fillStyle = "#000000" // áæä ÇáÎØ
-                        ctx.textAlign = "center"; // ãÍÇÐÇ É ÇáäÕ
-                        ctx.fillText(`${profile[getvalueof.id].tite}`, 150, 199) // ÇÍÏÇËíÇÊ ÇáäÞÇØ
+                        ctx.font = "bold 12px kathen" // ن
+                        ctx.fontSize = '15px'; // عرض الخطوع الخط وحجمه
+                        ctx.fillStyle = "#000000" // لون الخط
+                        ctx.textAlign = "center"; // محاذا ة النص
+                        ctx.fillText(`${profile[getvalueof.id].tite}`, 150, 199) // احداثيات النقاط
  
                         //info
-                        ctx.font = "bold 12px kathen" // ä
-                        ctx.fontSize = '15px'; // ÚÑÖ ÇáÎØæÚ ÇáÎØ æÍÌãå
-                        ctx.fillStyle = "#f1f1f1" // áæä ÇáÎØ
-                        ctx.textAlign = "center"; // ãÍÇÐÇ É ÇáäÕ
-                        ctx.fillText(`${profile[getvalueof.id].tite}`, 150, 197) // ÇÍÏÇËíÇÊ ÇáäÞÇØ
+                        ctx.font = "bold 12px kathen" // ن
+                        ctx.fontSize = '15px'; // عرض الخطوع الخط وحجمه
+                        ctx.fillStyle = "#f1f1f1" // لون الخط
+                        ctx.textAlign = "center"; // محاذا ة النص
+                        ctx.fillText(`${profile[getvalueof.id].tite}`, 150, 197) // احداثيات النقاط
  
                         // REP
                         ctx.font = "bold 26px  kathen";
@@ -846,5 +846,4 @@ message.channel.stopTyping()
 })
 }
 });
-
 client.login(process.env.BOT_TOKEN);
